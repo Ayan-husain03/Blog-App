@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import conf from "./conf/config.js";
 
 function App() {
-  return (
-    <div>App</div>
-  )
+  return <div className="text-5xl">App</div>;
 }
 
-export default App
+export default App;
