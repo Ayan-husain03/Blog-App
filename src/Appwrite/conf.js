@@ -89,7 +89,7 @@ export class Service {
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        queries,
+        queries
       );
     } catch (error) {
       console.error("Error getting posts:", error);
@@ -97,6 +97,31 @@ export class Service {
     }
   }
   // upload a file to the bucket
+  async uploadFile(file) {
+    try {
+      return await this.bucket.createFile(
+        conf.appwriteBucketId,
+        ID.unique(),
+        file
+      );
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      throw error;
+    }
+  }
+  // delete a file in the bucket
+  async deleteFile(fileId) {
+    try {
+      return await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
+    } catch (error) {
+      console.error("Error deleting file:", error);
+      throw error;
+    }
+  }
+  // get a file in the bucket
+  getFilePreview(fileId) {
+    return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
+  }
 }
 
 const service = new Service();
