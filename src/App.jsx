@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   return !loading ? (
-    <div className="min-h-screen text-center p-5 bg-amber-200">
+    <div className="min-h-screen text-center bg-amber-200">
       <Header />
       <Outlet />
       <Footer />

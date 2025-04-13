@@ -17,7 +17,7 @@ function Header() {
   return (
     <header>
       <Container>
-        <nav className="flex justify-between items-center py-4">
+        <nav className="flex justify-between items-center py-4 px-5 shadow-md rounded-lg">
           <div>
             <Link to="/">Logo</Link>
           </div>
@@ -26,7 +26,7 @@ function Header() {
               (item) =>
                 item.active && (
                   <li key={item.name}>
-                    <button onClick={() => navigate(item.path)}>{item.name}</button>
+                    <button className={`py-2 px-3 active:bg-white bg-black text-white rounded-xl`} onClick={() => navigate(item.path)}>{item.name}</button>
                   </li>
                 )
             )}
