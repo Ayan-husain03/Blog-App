@@ -10,6 +10,8 @@ import About from "./component/About.jsx";
 import { NotFound } from "./component/index.js";
 import Register from "./pages/Register.jsx";
 import Signin from "./pages/Signin.jsx";
+import AllPost from "./pages/AllPost.jsx";
+import AddPost from "./pages/AddPost.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -20,6 +22,8 @@ createRoot(document.getElementById("root")).render(
           <Route path="about" element={<About />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Signin />} />
+          <Route path="/all-post" element={<AllPost />} />
+          <Route path="/add-post" element={<AddPost />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

@@ -12,6 +12,7 @@ function RTE({ name, control, label, defaulValue = " " }) {
           control={control}
           render={({ field: { onChange } }) => (
             <Editor
+              apiKey="f23f8tah6t5ntvng3tk57qgyi8m42ftkeplqm0bosooogrtk"
               initialValue="default value"
               init={{
                 initialValue: defaulValue,
