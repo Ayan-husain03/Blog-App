@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import Container from "../container/Container";
 import LogoutBtn from "./LogoutBtn";
+import Logo from "../Logo";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -17,22 +18,31 @@ function Header() {
   return (
     <header>
       <Container>
-        <nav className="flex justify-between items-center py-4 px-5 shadow-md rounded-lg">
+        <nav className="flex justify-between py-2 items-center  px-5 shadow-md rounded-lg">
           <div>
-            <Link to="/">Logo</Link>
+            <Link to="/">
+              <Logo width={140} />
+            </Link>
           </div>
           <ul className="flex space-x-4">
             {navItems.map(
               (item) =>
                 item.active && (
                   <li key={item.name}>
-                    <button className={`py-2 px-3 active:bg-white bg-black text-white rounded-xl`} onClick={() => navigate(item.path)}>{item.name}</button>
+                    <button
+                      className={`py-2 px-3 cursor-pointer rounded-xl`}
+                      onClick={() => navigate(item.path)}
+                    >
+                      {item.name}
+                    </button>
                   </li>
                 )
             )}
-            {authStatus && (<li>
-              <LogoutBtn />
-            </li>)}
+            {authStatus && (
+              <li>
+                <LogoutBtn />
+              </li>
+            )}
           </ul>
         </nav>
       </Container>

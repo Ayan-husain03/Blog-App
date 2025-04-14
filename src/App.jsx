@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Outlet } from "react-router";
 import authService from "./Appwrite/auth";
 import { login, logout } from "./store/AuthSlice";
-import { Header, Footer } from "./component";
+import { Header, Footer, Loader } from "./component";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -26,17 +26,18 @@ function App() {
       }
     }
     checkUser();
-   
   }, []);
 
   return !loading ? (
-    <div className="min-h-screen text-center bg-amber-200">
+    <div className="min-h-screen text-center">
       <Header />
       <Outlet />
       <Footer />
     </div>
   ) : (
-    <div className="text-5xl text-center p-32">Loading...</div>
+    <div className="text-5xl text-center">
+      <Loader />
+    </div>
   );
 }
 

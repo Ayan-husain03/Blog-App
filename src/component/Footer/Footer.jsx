@@ -1,17 +1,19 @@
-import React from 'react'
+import React from "react";
+import Logo from "../Logo";
 
 // BlogFooter.jsx
 // import { FaFacebookF, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 text-gray-300 py-10 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-gray-950 text-gray-300 py-10 px-3 md:px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 place-items-center md:grid-cols-4 gap-8">
         {/* Logo & Description */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-2">BlogVerse</h2>
+          <Logo width={200} />
           <p className="text-sm text-gray-400">
-            Dive into the world of ideas, insights, and stories. BlogVerse is your daily dose of creativity and knowledge.
+            Dive into the world of ideas, insights, and stories. BlogVerse is
+            your daily dose of creativity and knowledge.
           </p>
         </div>
 
@@ -19,10 +21,26 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-2 text-white">Quick Links</h3>
           <ul className="space-y-1 text-sm">
-            <li><a href="#" className="hover:text-white">Home</a></li>
-            <li><a href="#" className="hover:text-white">Blogs</a></li>
-            <li><a href="#" className="hover:text-white">About</a></li>
-            <li><a href="#" className="hover:text-white">Contact</a></li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Blogs
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Contact
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -56,7 +74,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="text-center text-xs text-gray-500 mt-10 border-t border-gray-800 pt-4">
-        © {new Date().getFullYear()} BlogVerse. All rights reserved.
+        © {new Date().getFullYear()} Inkly. All rights reserved.
       </div>
     </footer>
   );
