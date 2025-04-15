@@ -3,13 +3,14 @@ import service from "../Appwrite/conf";
 import { Link } from "react-router";
 
 function PostCard({ post }) {
- const {$id, title, content, featuredImage} = post
+  const { $id, title, content, featuredImage } = post
+  const imageUrl = service.getFilePreview(featuredImage)
   return (
     <Link to={`/post/${$id}`} className="">
       <div className="w-full h-48 bg-gray-200">
         <div>
           <img
-            src={service.getFilePreview(featuredImage)}
+            src={imageUrl}
             alt={title}
             className="object-cover"
           />

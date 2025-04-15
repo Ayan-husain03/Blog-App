@@ -10,7 +10,7 @@ const Input = React.forwardRef(({
 }, ref) => {
   const id = useId();
     return <div className="w-full">
-        {label && <label htmlFor={id} className="block font-semibold mb-2 text-left pl-2 text-gray-700">{label}</label>}
+        {label && <label htmlFor={id} className="block font-semibold mb-2 text-left pl-2">{label}</label>}
         <input
             type={type}
             id={id}

@@ -17,9 +17,9 @@ function PostForm({ post }) {
         status: post?.status || "active",
       },
     });
+  console.log(post)
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.user);
-  console.log(userData);
   async function submit(data) {
     try {
       if (post) {
