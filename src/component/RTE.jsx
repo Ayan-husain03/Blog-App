@@ -2,11 +2,11 @@ import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";
 
-function RTE({ name, control, label, defaulValue = " " }) {
+function RTE({ name, control, label, defaultValue = " " }) {
   return (
     <>
       <div className="w-full">
-        {label && <label className="mb-1 pl-1 block">{label}</label>}
+        {label && <label className="my-2 block text-left font-semibold pl-1 ">{label}</label>}
         <Controller
           name={name || "content"}
           control={control}
@@ -15,7 +15,7 @@ function RTE({ name, control, label, defaulValue = " " }) {
               apiKey="f23f8tah6t5ntvng3tk57qgyi8m42ftkeplqm0bosooogrtk"
               initialValue="default value"
               init={{
-                initialValue: defaulValue,
+                initialValue: defaultValue,
                 branding: false,
                 height: 500,
                 menubar: true,

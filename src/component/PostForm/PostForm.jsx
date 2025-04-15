@@ -18,20 +18,21 @@ function PostForm({ post }) {
       },
     });
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.user);
+  const userData = useSelector((state) => state.auth.user);
   console.log(userData);
   async function submit(data) {
     try {
       if (post) {
+        console.log(post)
         const file = data.image[0]
           ? await service.uploadFile(data.image[0])
           : null;
         if (file) {
-          service.deleteFile(post.featuredImage);
+         await service.deleteFile(post.featuredImage);
         }
         const dbPost = await service.updatePost(post.$id, {
           ...data,
-          featuredImage: file ? file.$id : "no file",
+          featuredImage: file ? file.$id : post.featuredImage,
         });
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
@@ -63,7 +64,7 @@ function PostForm({ post }) {
       return value
         .trim()
         .toLowerCase()
-        .replace(/^[a-zA-Z\d\s]/g, "-")
+        .replace(/[^a-zA-Z\d\s]/g, "-")
         .replace(/\s+/g, "-");
     } else return "";
   }, []);
@@ -83,7 +84,7 @@ function PostForm({ post }) {
     <form onSubmit={handleSubmit(submit)}>
       <div className="flex flex-wrap sm:flex-col md:flex-row">
         {/* first div left side */}
-        <div className="md:w-2/3 p-2">
+        <div className="md:w-2/3 w-full p-2">
           <Input
             label="Title"
             placeholder="Enter title"
@@ -99,9 +100,7 @@ function PostForm({ post }) {
               required: true,
             })}
             onInput={(e) => {
-              setValue("slug", slugTransform(e.currentTarget.value), {
-                shouldValidate: true,
-              });
+              setValue("slug", slugTransform(e.currentTarget.value));
             }}
           />
           {/* this is editior */}
@@ -113,13 +112,13 @@ function PostForm({ post }) {
           />
         </div>
         {/* second div right side */}
-        <div className="md:w-1/3 p-2">
+        <div className="md:w-1/3 w-full p-2">
           {/* this input for images */}
           <Input
             label="Select Image"
             type="file"
             accept="image/png, image/jpg. image/jpeg, image/gif"
-            {...register("image", { required: !post })}
+            {...register("featuredImage", { required: !post })}
           />
           {post && (
             <div className="w-full mb-2">

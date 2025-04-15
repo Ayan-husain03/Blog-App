@@ -11,6 +11,7 @@ function AllPost() {
       }
     });
   }, []);
+  console.log(post);
 
   return (
     <div>

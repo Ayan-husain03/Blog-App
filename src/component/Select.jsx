@@ -5,14 +5,17 @@ function Select({ options = [], label, className = "", ...props }, ref) {
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={id} className="text-sm font-medium text-gray-700">
+        <label
+          htmlFor={id}
+          className="text-sm block text-left my-2 font-medium text-gray-700"
+        >
           {label}
         </label>
       )}
       <select
         id={id}
         ref={ref}
-        className={`block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50 ${className}`}
+        className={`block w-full my-2  border-blue-500 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm focus:ring-opacity-50 p-2 ${className}`}
         {...props}
       >
         {options?.map((option) => (
