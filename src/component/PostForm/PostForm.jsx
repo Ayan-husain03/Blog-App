@@ -12,35 +12,35 @@ function PostForm({ post }) {
     useForm({
       defaultValues: {
         title: post?.title || "",
-        slug: post?.slug || "",
+        slug: post?.$id || "",
         content: post?.content || "",
         status: post?.status || "active",
       },
     });
-  console.log(post)
+
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.user);
   async function submit(data) {
     try {
       if (post) {
-        console.log(post)
         const file = data.image[0]
           ? await service.uploadFile(data.image[0])
           : null;
+        console.log(file);
         if (file) {
-         await service.deleteFile(post.featuredImage);
+          await service.deleteFile(post.featuredImage);
         }
         const dbPost = await service.updatePost(post.$id, {
           ...data,
-          featuredImage: file ? file.$id : post.featuredImage,
+          featuredImage: file ? file.$id : undefined,
         });
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
         }
       } else {
-        const file = data.image[0]
-          ? await service.uploadFile(data.image[0])
-          : null;
+        const file = await service.uploadFile(data.image[0]);
+
+        console.log(file);
         if (file) {
           const fileId = file.$id;
           data.featuredImage = fileId;
@@ -48,13 +48,14 @@ function PostForm({ post }) {
             ...data,
             userId: userData.$id,
           });
+          console.log(dbPost);
           if (dbPost) {
             navigate(`/post/${dbPost.$id}`);
           }
         }
       }
     } catch (error) {
-      console.log(error.message)
+      console.error("error in line 59 PostForm : error for creating post", error.message);
     }
   }
 
@@ -118,10 +119,10 @@ function PostForm({ post }) {
             label="Select Image"
             type="file"
             accept="image/png, image/jpg. image/jpeg, image/gif"
-            {...register("featuredImage", { required: !post })}
+            {...register("image", { required: !post })}
           />
           {post && (
-            <div className="w-full mb-2">
+            <div className="w-full my-2">
               <img
                 src={service.getFilePreview(post.featuredImage)}
                 alt={post.title}
@@ -132,10 +133,14 @@ function PostForm({ post }) {
           <Select
             options={["active", "inactive"]}
             label="status"
-            className="mb-4"
+            className="mb-4 bg-gray-600"
             {...register("status", { required: true })}
           />
-          <Button className="w-full" type="submit">
+          <Button
+            className="w-full"
+            type="submit"
+            bgColor={post ? "bg-green-500" : undefined}
+          >
             {post ? "Update" : "Submit"}
           </Button>
         </div>

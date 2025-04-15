@@ -6,7 +6,11 @@ function RTE({ name, control, label, defaultValue = " " }) {
   return (
     <>
       <div className="w-full">
-        {label && <label className="my-2 block text-left font-semibold pl-1 ">{label}</label>}
+        {label && (
+          <label className="my-2 block text-left font-semibold pl-1 ">
+            {label}
+          </label>
+        )}
         <Controller
           name={name || "content"}
           control={control}

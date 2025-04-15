@@ -13,10 +13,19 @@ function Home() {
       }
     });
   }, []);
+    console.log("this post from home : ", post)
 
-    return <div>
-      
-  </div>;
+  return (
+    <div className="w-full py-8">
+          <Container>
+              {post.map(post => (
+                  <div key={post.$id}>
+                      <PostCard post={post} />
+                  </div>
+              ))}
+      </Container>
+    </div>
+  );
 }
 
 export default Home;

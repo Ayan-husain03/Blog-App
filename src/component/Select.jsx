@@ -7,7 +7,7 @@ function Select({ options = [], label, className = "", ...props }, ref) {
       {label && (
         <label
           htmlFor={id}
-          className="text-sm block text-left my-2 font-medium text-gray-700"
+          className="text-sm block text-left my-2 font-medium"
         >
           {label}
         </label>

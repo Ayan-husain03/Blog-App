@@ -11,7 +11,7 @@ function AllPost() {
       }
     });
   }, []);
-  console.log(post);
+  console.log("this is from all post", post);
 
   return (
     <div>

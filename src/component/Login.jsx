@@ -35,7 +35,7 @@ function Login() {
         }
       }
     } catch (error) {
-      setError("Invalid password");
+      setError(error.message);
       toast.error("Error logging in ");
       console.log(error);
     }
@@ -50,7 +50,7 @@ function Login() {
           <h2 className="text-center text-2xl  font-bold mb-5">
             Sign in to your account
           </h2>
-          <p className="mb-5 text-gray-600">
+          <p className="mb-5 text-gray-600 text-center">
             Don't have an account?{" "}
             <Link to="/signup" className="text-blue-600 hover:underline">
               Sign up

@@ -5,13 +5,14 @@ import App from "./App.jsx";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
-import Home from "./component/Home.jsx";
 import About from "./component/About.jsx";
 import { NotFound } from "./component/index.js";
 import Register from "./pages/Register.jsx";
 import Signin from "./pages/Signin.jsx";
 import AllPost from "./pages/AllPost.jsx";
 import AddPost from "./pages/AddPost.jsx";
+import Home from "./pages/Home.jsx";
+
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>

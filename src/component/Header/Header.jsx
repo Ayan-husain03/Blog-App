@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
@@ -69,7 +70,7 @@ function Header() {
             <>
               {/* Backdrop */}
               <motion.div
-                className="fixed inset-0 bg-black bg-opacity-50"
+                className="fixed inset-0 bg-black/70"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -82,7 +83,7 @@ function Header() {
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ type: "tween" }}
-                className="fixed top-0 right-0 w-72 h-full shadow-lg z-50 p-5"
+                className="fixed top-0 right-0 w-72 h-full bg-white text-black shadow-lg z-50 p-5"
               >
                 <div className="flex justify-between items-center mb-6">
                   <Logo width={100} />
@@ -97,7 +98,7 @@ function Header() {
                         <li key={item.name}>
                           <button
                             onClick={() => handleNavigate(item.path)}
-                            className="block w-full text-left py-2 px-3 hover:bg-gray-100 rounded"
+                            className="block w-full text-left py-2 px-3 hover:bg-gray-200 rounded"
                           >
                             {item.name}
                           </button>
