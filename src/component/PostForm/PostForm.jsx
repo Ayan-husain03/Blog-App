@@ -55,7 +55,10 @@ function PostForm({ post }) {
         }
       }
     } catch (error) {
-      console.error("error in line 59 PostForm : error for creating post", error.message);
+      console.error(
+        "error in line 59 PostForm : error for creating post",
+        error.message
+      );
     }
   }
 
@@ -118,7 +121,7 @@ function PostForm({ post }) {
           <Input
             label="Select Image"
             type="file"
-            accept="image/png, image/jpg. image/jpeg, image/gif"
+            accept="image/png, image/jpg, image/jpeg, image/gif"
             {...register("image", { required: !post })}
           />
           {post && (
