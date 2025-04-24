@@ -34,10 +34,7 @@ export class Service {
     }
   }
   // update a document in the database
-  async updatePost(
-    documentId,
-    { title, slug, content, featuredImage, status }
-  ) {
+  async updatePost(documentId, { title, content, featuredImage, status }) {
     try {
       return await this.databases.updateDocument(
         conf.appwriteDatabaseId,
@@ -45,7 +42,6 @@ export class Service {
         documentId,
         {
           title,
-          slug,
           content,
           featuredImage,
           status,
@@ -110,10 +106,18 @@ export class Service {
   }
   // delete a file in the bucket
   async deleteFile(fileId) {
+    if (!fileId) {
+      console.warn("No fileId Provided");
+      return;
+    }
     try {
+      console.log("in the conf", fileId);
       return await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
     } catch (error) {
-      console.error("Error deleting file:", error);
+      console.error(
+        "Line 117 in the conf.js = Error deleting file:",
+        error.message
+      );
       throw error;
     }
   }

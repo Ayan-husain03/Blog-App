@@ -4,13 +4,13 @@ import service from "../Appwrite/conf";
 import { useNavigate, useParams } from "react-router";
 
 function EditPost() {
-  const [post, setPost] = useState([]);
-  const { $id } = useParams();
+  const [post, setPost] = useState(null);
+  const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if ($id) {
-      service.getPost($id).then((post) => {
+    if (id) {
+      service.getPost(id).then((post) => {
         if (post) {
           setPost(post);
         }
@@ -18,7 +18,7 @@ function EditPost() {
     } else {
       navigate("/");
     }
-  }, [$id, navigate]);
+  }, [id, navigate]);
 
   return post ? (
     <div className="py-5">

@@ -74,7 +74,9 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="text-center text-xs text-gray-500 mt-10 border-t border-gray-800 pt-4">
-        © {new Date().getFullYear()} Inkly. All rights reserved.
+        © {new Date().getFullYear()} BlogVerse. All rights reserved.
+        <br />
+        Designed by <span className="font-bold text-blue-700">Ayan Husain</span>
       </div>
     </footer>
   );

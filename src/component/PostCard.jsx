@@ -1,21 +1,18 @@
 import React from "react";
 import { Link } from "react-router";
 import service from "../Appwrite/conf";
-import UserData from "./UserData";
 
 function PostCard({ post }) {
   const { $id, title, featuredImage } = post;
 
   // Use getFileView instead of getFilePreview (to fix the error on free plan)
   const imageUrl = service.getFilePreview(featuredImage);
-
   return (
     <Link
       to={`/post/${$id}`}
       className="block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
     >
       <div className="w-full h-48 overflow-hidden">
-      <UserData />
         <img
           src={imageUrl.href}
           alt={title}

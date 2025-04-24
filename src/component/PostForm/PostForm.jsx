@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useCallback } from "react";
 import { useEffect } from "react";
 import { Input, Button, RTE, Select } from "../index";
+import Swal from "sweetalert2";
 
 function PostForm({ post }) {
   const { register, handleSubmit, watch, setValue, control, getValues } =
@@ -23,10 +24,11 @@ function PostForm({ post }) {
   async function submit(data) {
     try {
       if (post) {
-        const file = data.image[0]
+        console.log("from line 26 postform : ", post);
+        const file = data.image?.[0]
           ? await service.uploadFile(data.image[0])
           : null;
-        console.log(file);
+
         if (file) {
           await service.deleteFile(post.featuredImage);
         }
@@ -36,11 +38,16 @@ function PostForm({ post }) {
         });
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
+          Swal.fire({
+            icon: "success",
+            title: "Post Updated Successfully",
+            text: "Your post has been updated successfully.",
+            confirmButtonText: "Continue",
+            timer: 2000,
+          });
         }
       } else {
         const file = await service.uploadFile(data.image[0]);
-
-        console.log(file);
         if (file) {
           const fileId = file.$id;
           data.featuredImage = fileId;
@@ -48,7 +55,14 @@ function PostForm({ post }) {
             ...data,
             userId: userData.$id,
           });
-          console.log(dbPost);
+          Swal.fire({
+            icon: "success",
+            title: "Post Created Successfully",
+            text: "Your post has been created successfully.",
+            confirmButtonText: "Continue",
+            timer: 2000,
+          });
+          console.log("49 from post form", data);
           if (dbPost) {
             navigate(`/post/${dbPost.$id}`);
           }
@@ -83,7 +97,7 @@ function PostForm({ post }) {
     return () => {
       subscription.unsubscribe();
     };
-  }, [watch, slugTransform, setValue]);
+  }, [watch, setValue]);
   return (
     <form onSubmit={handleSubmit(submit)}>
       <div className="flex flex-wrap sm:flex-col md:flex-row">

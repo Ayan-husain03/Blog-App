@@ -58,7 +58,7 @@ function Signup() {
           <h2 className="text-center text-2xl md:text-3xl font-bold mb-3">
             Sign up to create an account
           </h2>
-          <p className="mb-5 text-gray-600">
+          <p className="mb-5 text-gray-600 text-center">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-600 hover:underline">
               Login

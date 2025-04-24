@@ -42,7 +42,7 @@ function Header() {
                   <li key={item.name}>
                     <button
                       onClick={() => handleNavigate(item.path)}
-                      className="py-2 px-3 rounded-xl hover:bg-gray-200"
+                      className="py-2 px-3 rounded-xl cursor-pointer links"
                     >
                       {item.name}
                     </button>

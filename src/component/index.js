@@ -13,6 +13,9 @@ import RTE from "./RTE";
 import Select from "./Select";
 import PostForm from "./PostForm/PostForm";
 import PostCard from "./PostCard";
+import ProtectedRoute from "./ProtectedRoute";
+import CardLoader from "./CardLoader";
+
 
 export {
   Header,
@@ -30,4 +33,6 @@ export {
   Select,
   PostForm,
   PostCard,
+  ProtectedRoute,
+  CardLoader,
 };
